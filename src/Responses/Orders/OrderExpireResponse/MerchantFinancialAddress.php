@@ -1,0 +1,140 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Getivy\Responses\Orders\OrderExpireResponse;
+
+use Getivy\Core\Attributes\Api;
+use Getivy\Core\Concerns\SdkModel;
+use Getivy\Core\Contracts\BaseModel;
+use Getivy\Responses\Orders\OrderExpireResponse\MerchantFinancialAddress\BankCode;
+use Getivy\Responses\Orders\OrderExpireResponse\MerchantFinancialAddress\Bban;
+use Getivy\Responses\Orders\OrderExpireResponse\MerchantFinancialAddress\Iban;
+use Getivy\Responses\Orders\OrderExpireResponse\MerchantFinancialAddress\SortCode;
+use Getivy\Responses\Orders\OrderExpireResponse\MerchantFinancialAddress\Type;
+
+/**
+ * The financial address of the merchant associated with the order. Only available when requested via order/details and therefore requires authentication.
+ */
+final class MerchantFinancialAddress implements BaseModel
+{
+    use SdkModel;
+
+    /** @var Type::* $type */
+    #[Api(enum: Type::class)]
+    public string $type;
+
+    #[Api(optional: true)]
+    public ?BankCode $bankCode;
+
+    #[Api(optional: true)]
+    public ?Bban $bban;
+
+    #[Api(optional: true)]
+    public ?Iban $iban;
+
+    #[Api(optional: true)]
+    public ?string $paymentReference;
+
+    #[Api(optional: true)]
+    public ?SortCode $sortCode;
+
+    /**
+     * `new MerchantFinancialAddress()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * MerchantFinancialAddress::with(type: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new MerchantFinancialAddress)->withType(...)
+     * ```
+     */
+    public function __construct()
+    {
+        self::introspect();
+        $this->unsetOptionalProperties();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param Type::* $type
+     */
+    public static function with(
+        string $type,
+        ?BankCode $bankCode = null,
+        ?Bban $bban = null,
+        ?Iban $iban = null,
+        ?string $paymentReference = null,
+        ?SortCode $sortCode = null,
+    ): self {
+        $obj = new self;
+
+        $obj->type = $type;
+
+        null !== $bankCode && $obj->bankCode = $bankCode;
+        null !== $bban && $obj->bban = $bban;
+        null !== $iban && $obj->iban = $iban;
+        null !== $paymentReference && $obj->paymentReference = $paymentReference;
+        null !== $sortCode && $obj->sortCode = $sortCode;
+
+        return $obj;
+    }
+
+    /**
+     * @param Type::* $type
+     */
+    public function withType(string $type): self
+    {
+        $obj = clone $this;
+        $obj->type = $type;
+
+        return $obj;
+    }
+
+    public function withBankCode(BankCode $bankCode): self
+    {
+        $obj = clone $this;
+        $obj->bankCode = $bankCode;
+
+        return $obj;
+    }
+
+    public function withBban(Bban $bban): self
+    {
+        $obj = clone $this;
+        $obj->bban = $bban;
+
+        return $obj;
+    }
+
+    public function withIban(Iban $iban): self
+    {
+        $obj = clone $this;
+        $obj->iban = $iban;
+
+        return $obj;
+    }
+
+    public function withPaymentReference(string $paymentReference): self
+    {
+        $obj = clone $this;
+        $obj->paymentReference = $paymentReference;
+
+        return $obj;
+    }
+
+    public function withSortCode(SortCode $sortCode): self
+    {
+        $obj = clone $this;
+        $obj->sortCode = $sortCode;
+
+        return $obj;
+    }
+}
