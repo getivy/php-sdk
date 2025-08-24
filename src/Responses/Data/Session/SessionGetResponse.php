@@ -7,7 +7,6 @@ namespace Getivy\Responses\Data\Session;
 use Getivy\Core\Attributes\Api;
 use Getivy\Core\Concerns\SdkModel;
 use Getivy\Core\Contracts\BaseModel;
-use Getivy\Core\Conversion\MapOf;
 use Getivy\Responses\Data\Session\SessionGetResponse\Locale;
 use Getivy\Responses\Data\Session\SessionGetResponse\Market;
 use Getivy\Responses\Data\Session\SessionGetResponse\Prefill;
@@ -106,7 +105,7 @@ final class SessionGetResponse implements BaseModel
      *
      * @var array<string, mixed>|null $metadata
      */
-    #[Api(type: new MapOf('string'), optional: true)]
+    #[Api(map: 'mixed', optional: true)]
     public ?array $metadata;
 
     /**
@@ -164,9 +163,9 @@ final class SessionGetResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status::* $status
-     * @param Locale::*|null $locale
-     * @param Market::*|null $market
-     * @param array<string, mixed>|null $metadata
+     * @param Locale::* $locale
+     * @param Market::* $market
+     * @param array<string, mixed> $metadata
      */
     public static function with(
         string $id,

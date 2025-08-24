@@ -7,7 +7,6 @@ namespace Getivy\Responses\Webhook\Subscription;
 use Getivy\Core\Attributes\Api;
 use Getivy\Core\Concerns\SdkModel;
 use Getivy\Core\Contracts\BaseModel;
-use Getivy\Core\Conversion\ListOf;
 use Getivy\Responses\Webhook\Subscription\SubscriptionListResponse\Item;
 
 final class SubscriptionListResponse implements BaseModel
@@ -31,7 +30,7 @@ final class SubscriptionListResponse implements BaseModel
      *
      * @var list<Item> $items
      */
-    #[Api(type: new ListOf(Item::class))]
+    #[Api(list: Item::class)]
     public array $items;
 
     /**

@@ -7,7 +7,6 @@ namespace Getivy\Responses\Data\Transactions;
 use Getivy\Core\Attributes\Api;
 use Getivy\Core\Concerns\SdkModel;
 use Getivy\Core\Contracts\BaseModel;
-use Getivy\Core\Conversion\ListOf;
 use Getivy\Responses\Data\Transactions\TransactionListResponse\Data;
 use Getivy\Responses\Data\Transactions\TransactionListResponse\Paging;
 
@@ -20,7 +19,7 @@ final class TransactionListResponse implements BaseModel
      *
      * @var list<Data> $data
      */
-    #[Api(type: new ListOf(Data::class))]
+    #[Api(list: Data::class)]
     public array $data;
 
     /**

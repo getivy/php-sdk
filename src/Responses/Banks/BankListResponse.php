@@ -7,7 +7,6 @@ namespace Getivy\Responses\Banks;
 use Getivy\Core\Attributes\Api;
 use Getivy\Core\Concerns\SdkModel;
 use Getivy\Core\Contracts\BaseModel;
-use Getivy\Core\Conversion\ListOf;
 use Getivy\Responses\Banks\BankListResponse\Bank;
 
 final class BankListResponse implements BaseModel
@@ -19,7 +18,7 @@ final class BankListResponse implements BaseModel
      *
      * @var list<Bank> $banks
      */
-    #[Api(type: new ListOf(Bank::class))]
+    #[Api(list: Bank::class)]
     public array $banks;
 
     /**

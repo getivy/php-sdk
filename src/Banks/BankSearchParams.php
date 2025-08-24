@@ -85,9 +85,9 @@ final class BankSearchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Capability::*|null $capability
-     * @param Currency::*|null $currency
-     * @param Market::*|null $market
+     * @param Capability::* $capability
+     * @param Currency::* $currency
+     * @param Market::* $market
      */
     public static function with(
         ?string $capability = null,

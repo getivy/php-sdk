@@ -7,8 +7,6 @@ namespace Getivy\Responses\Checkoutsession;
 use Getivy\Core\Attributes\Api;
 use Getivy\Core\Concerns\SdkModel;
 use Getivy\Core\Contracts\BaseModel;
-use Getivy\Core\Conversion\ListOf;
-use Getivy\Core\Conversion\MapOf;
 use Getivy\Responses\Checkoutsession\CheckoutsessionNewResponse\AvailableMarket;
 use Getivy\Responses\Checkoutsession\CheckoutsessionNewResponse\BillingAddress;
 use Getivy\Responses\Checkoutsession\CheckoutsessionNewResponse\Customer;
@@ -47,7 +45,7 @@ final class CheckoutsessionNewResponse implements BaseModel
     public float $expiresAt;
 
     /** @var list<LineItem> $lineItems */
-    #[Api(type: new ListOf(LineItem::class))]
+    #[Api(list: LineItem::class)]
     public array $lineItems;
 
     #[Api]
@@ -76,7 +74,7 @@ final class CheckoutsessionNewResponse implements BaseModel
     public ?string $abortReason;
 
     /** @var list<AvailableMarket::*>|null $availableMarkets */
-    #[Api(type: new ListOf(enum: AvailableMarket::class), optional: true)]
+    #[Api(list: AvailableMarket::class, optional: true)]
     public ?array $availableMarkets;
 
     #[Api(optional: true)]
@@ -107,7 +105,7 @@ final class CheckoutsessionNewResponse implements BaseModel
     public ?bool $handshake;
 
     /** @var list<string>|null $impactOffsetProjects */
-    #[Api(type: new ListOf('string'), optional: true)]
+    #[Api(list: 'string', optional: true)]
     public ?array $impactOffsetProjects;
 
     #[Api(optional: true)]
@@ -125,7 +123,7 @@ final class CheckoutsessionNewResponse implements BaseModel
     public ?string $market;
 
     /** @var array<string, mixed>|null $metadata */
-    #[Api(type: new MapOf('string'), optional: true)]
+    #[Api(map: 'mixed', optional: true)]
     public ?array $metadata;
 
     #[Api(optional: true)]
@@ -158,7 +156,7 @@ final class CheckoutsessionNewResponse implements BaseModel
     public ?ShippingAddress $shippingAddress;
 
     /** @var list<mixed>|null $shippingMethods */
-    #[Api(type: new ListOf('mixed'), optional: true)]
+    #[Api(list: 'mixed', optional: true)]
     public ?array $shippingMethods;
 
     #[Api(optional: true)]
@@ -229,14 +227,14 @@ final class CheckoutsessionNewResponse implements BaseModel
      *
      * @param list<LineItem> $lineItems
      * @param Status::* $status
-     * @param list<AvailableMarket::*>|null $availableMarkets
-     * @param list<string>|null $impactOffsetProjects
-     * @param Locale::*|null $locale
-     * @param Market::*|null $market
-     * @param array<string, mixed>|null $metadata
-     * @param PaymentMode::*|null $paymentMode
-     * @param PaymentSchemeSelection::*|null $paymentSchemeSelection
-     * @param list<mixed>|null $shippingMethods
+     * @param list<AvailableMarket::*> $availableMarkets
+     * @param list<string> $impactOffsetProjects
+     * @param Locale::* $locale
+     * @param Market::* $market
+     * @param array<string, mixed> $metadata
+     * @param PaymentMode::* $paymentMode
+     * @param PaymentSchemeSelection::* $paymentSchemeSelection
+     * @param list<mixed> $shippingMethods
      */
     public static function with(
         string $id,

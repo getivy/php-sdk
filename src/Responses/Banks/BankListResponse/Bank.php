@@ -7,7 +7,6 @@ namespace Getivy\Responses\Banks\BankListResponse;
 use Getivy\Core\Attributes\Api;
 use Getivy\Core\Concerns\SdkModel;
 use Getivy\Core\Contracts\BaseModel;
-use Getivy\Core\Conversion\ListOf;
 use Getivy\Responses\Banks\BankListResponse\Bank\Capability;
 use Getivy\Responses\Banks\BankListResponse\Bank\Currency;
 use Getivy\Responses\Banks\BankListResponse\Bank\Market;
@@ -24,7 +23,7 @@ final class Bank implements BaseModel
     public string $id;
 
     /** @var list<Currency::*> $currencies */
-    #[Api(type: new ListOf(enum: Currency::class))]
+    #[Api(list: Currency::class)]
     public array $currencies;
 
     /**
@@ -34,7 +33,7 @@ final class Bank implements BaseModel
     public bool $default;
 
     /** @var list<Market::*> $market */
-    #[Api(type: new ListOf(enum: Market::class))]
+    #[Api(list: Market::class)]
     public array $market;
 
     /**
@@ -48,7 +47,7 @@ final class Bank implements BaseModel
      *
      * @var list<SupportedPaymentScheme::*> $supportedPaymentSchemes
      */
-    #[Api(type: new ListOf(enum: SupportedPaymentScheme::class))]
+    #[Api(list: SupportedPaymentScheme::class)]
     public array $supportedPaymentSchemes;
 
     /**
@@ -62,7 +61,7 @@ final class Bank implements BaseModel
      *
      * @var list<Capability::*>|null $capabilities
      */
-    #[Api(type: new ListOf(enum: Capability::class), optional: true)]
+    #[Api(list: Capability::class, optional: true)]
     public ?array $capabilities;
 
     #[Api(optional: true)]
@@ -123,7 +122,7 @@ final class Bank implements BaseModel
      * @param list<Currency::*> $currencies
      * @param list<Market::*> $market
      * @param list<SupportedPaymentScheme::*> $supportedPaymentSchemes
-     * @param list<Capability::*>|null $capabilities
+     * @param list<Capability::*> $capabilities
      */
     public static function with(
         string $id,

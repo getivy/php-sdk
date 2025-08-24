@@ -17,7 +17,7 @@ final class Destination implements BaseModel
 {
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Api(nullable: true, optional: true)]
     public ?FinancialAddress $financialAddress;
 
     #[Api('orderId', optional: true)]
@@ -38,7 +38,7 @@ final class Destination implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Type::*|null $type
+     * @param Type::* $type
      */
     public static function with(
         ?FinancialAddress $financialAddress = null,

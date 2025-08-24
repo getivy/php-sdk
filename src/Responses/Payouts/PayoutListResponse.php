@@ -7,7 +7,6 @@ namespace Getivy\Responses\Payouts;
 use Getivy\Core\Attributes\Api;
 use Getivy\Core\Concerns\SdkModel;
 use Getivy\Core\Contracts\BaseModel;
-use Getivy\Core\Conversion\ListOf;
 use Getivy\Responses\Payouts\PayoutListResponse\Item;
 
 final class PayoutListResponse implements BaseModel
@@ -21,7 +20,7 @@ final class PayoutListResponse implements BaseModel
     public bool $hasNext;
 
     /** @var list<Item> $items */
-    #[Api(type: new ListOf(Item::class))]
+    #[Api(list: Item::class)]
     public array $items;
 
     #[Api]
