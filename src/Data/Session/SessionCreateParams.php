@@ -8,7 +8,6 @@ use Getivy\Core\Attributes\Api;
 use Getivy\Core\Concerns\SdkModel;
 use Getivy\Core\Concerns\SdkParams;
 use Getivy\Core\Contracts\BaseModel;
-use Getivy\Core\Conversion\MapOf;
 use Getivy\Data\Session\SessionCreateParams\Locale;
 use Getivy\Data\Session\SessionCreateParams\Market;
 use Getivy\Data\Session\SessionCreateParams\Prefill;
@@ -79,7 +78,7 @@ final class SessionCreateParams implements BaseModel
      *
      * @var array<string, mixed>|null $metadata
      */
-    #[Api(type: new MapOf('string'), optional: true)]
+    #[Api(map: 'mixed', optional: true)]
     public ?array $metadata;
 
     /**
@@ -127,10 +126,10 @@ final class SessionCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Locale::*|null $locale
-     * @param Market::*|null $market
-     * @param array<string, mixed>|null $metadata
-     * @param ThemeVariant::*|null $themeVariant
+     * @param Locale::* $locale
+     * @param Market::* $market
+     * @param array<string, mixed> $metadata
+     * @param ThemeVariant::* $themeVariant
      */
     public static function with(
         string $referenceID,

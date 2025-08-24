@@ -7,8 +7,6 @@ namespace Getivy\Responses\Data\Session;
 use Getivy\Core\Attributes\Api;
 use Getivy\Core\Concerns\SdkModel;
 use Getivy\Core\Contracts\BaseModel;
-use Getivy\Core\Conversion\ListOf;
-use Getivy\Core\Conversion\MapOf;
 use Getivy\Responses\Data\Session\SessionNewResponse\AvailableMarket;
 use Getivy\Responses\Data\Session\SessionNewResponse\Locale;
 use Getivy\Responses\Data\Session\SessionNewResponse\Market;
@@ -30,7 +28,7 @@ final class SessionNewResponse implements BaseModel
      *
      * @var list<AvailableMarket::*> $availableMarkets
      */
-    #[Api(type: new ListOf(enum: AvailableMarket::class))]
+    #[Api(list: AvailableMarket::class)]
     public array $availableMarkets;
 
     /**
@@ -122,7 +120,7 @@ final class SessionNewResponse implements BaseModel
      *
      * @var array<string, mixed>|null $metadata
      */
-    #[Api(type: new MapOf('string'), optional: true)]
+    #[Api(map: 'mixed', optional: true)]
     public ?array $metadata;
 
     /**
@@ -185,9 +183,9 @@ final class SessionNewResponse implements BaseModel
      *
      * @param list<AvailableMarket::*> $availableMarkets
      * @param Status::* $status
-     * @param Locale::*|null $locale
-     * @param Market::*|null $market
-     * @param array<string, mixed>|null $metadata
+     * @param Locale::* $locale
+     * @param Market::* $market
+     * @param array<string, mixed> $metadata
      */
     public static function with(
         string $id,

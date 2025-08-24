@@ -129,9 +129,9 @@ final class Return implements BaseModel
   * @param Currency::* $currency
   * @param string $depositID
   * @param Status::* $status
-  * @param \DateTimeInterface|null $failedAt
-  * @param \DateTimeInterface|null $succeededAt
-  * @param string|null $transactionID
+  * @param \DateTimeInterface $failedAt
+  * @param \DateTimeInterface $succeededAt
+  * @param string $transactionID
   * 
   * @return self
  */
@@ -142,9 +142,9 @@ final class Return implements BaseModel
     string $currency,
     string $depositID,
     string $status,
-    ?\DateTimeInterface $failedAt = null,
-    ?\DateTimeInterface $succeededAt = null,
-    ?string $transactionID = null,
+    \DateTimeInterface $failedAt = null,
+    \DateTimeInterface $succeededAt = null,
+    string $transactionID = null,
   ): self {
     $obj = new self;
 

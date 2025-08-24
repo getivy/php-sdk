@@ -7,7 +7,6 @@ namespace Getivy\Responses\Customers;
 use Getivy\Core\Attributes\Api;
 use Getivy\Core\Concerns\SdkModel;
 use Getivy\Core\Contracts\BaseModel;
-use Getivy\Core\Conversion\ListOf;
 use Getivy\Responses\Customers\CustomerGetResponse\BankAccount;
 
 final class CustomerGetResponse implements BaseModel
@@ -25,7 +24,7 @@ final class CustomerGetResponse implements BaseModel
      *
      * @var list<BankAccount> $bankAccounts
      */
-    #[Api(type: new ListOf(BankAccount::class))]
+    #[Api(list: BankAccount::class)]
     public array $bankAccounts;
 
     /**

@@ -7,7 +7,6 @@ namespace Getivy\Responses\Data\Consent;
 use Getivy\Core\Attributes\Api;
 use Getivy\Core\Concerns\SdkModel;
 use Getivy\Core\Contracts\BaseModel;
-use Getivy\Core\Conversion\ListOf;
 use Getivy\Responses\Data\Consent\ConsentRevokeResponse\Permission;
 use Getivy\Responses\Data\Consent\ConsentRevokeResponse\Status;
 
@@ -26,7 +25,7 @@ final class ConsentRevokeResponse implements BaseModel
      *
      * @var list<Permission::*> $permissions
      */
-    #[Api(type: new ListOf(enum: Permission::class))]
+    #[Api(list: Permission::class)]
     public array $permissions;
 
     /**

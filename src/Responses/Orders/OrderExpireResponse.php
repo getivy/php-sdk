@@ -7,8 +7,6 @@ namespace Getivy\Responses\Orders;
 use Getivy\Core\Attributes\Api;
 use Getivy\Core\Concerns\SdkModel;
 use Getivy\Core\Contracts\BaseModel;
-use Getivy\Core\Conversion\ListOf;
-use Getivy\Core\Conversion\MapOf;
 use Getivy\Responses\Orders\OrderExpireResponse\BillingAddress;
 use Getivy\Responses\Orders\OrderExpireResponse\ClimateActionMode;
 use Getivy\Responses\Orders\OrderExpireResponse\Destination;
@@ -142,7 +140,7 @@ final class OrderExpireResponse implements BaseModel
     public ?bool $guest;
 
     /** @var list<mixed>|null $impactOffsetProjects */
-    #[Api(type: new ListOf('mixed'), optional: true)]
+    #[Api(list: 'mixed', optional: true)]
     public ?array $impactOffsetProjects;
 
     /**
@@ -150,7 +148,7 @@ final class OrderExpireResponse implements BaseModel
      *
      * @var list<LineItem>|null $lineItems
      */
-    #[Api(type: new ListOf(LineItem::class), optional: true)]
+    #[Api(list: LineItem::class, optional: true)]
     public ?array $lineItems;
 
     #[Api(optional: true)]
@@ -167,7 +165,7 @@ final class OrderExpireResponse implements BaseModel
      *
      * @var array<string, mixed>|null $metadata
      */
-    #[Api(type: new MapOf('string'), optional: true)]
+    #[Api(map: 'mixed', optional: true)]
     public ?array $metadata;
 
     /**
@@ -213,7 +211,7 @@ final class OrderExpireResponse implements BaseModel
      *
      * @var list<Refund>|null $refunds
      */
-    #[Api(type: new ListOf(Refund::class), optional: true)]
+    #[Api(list: Refund::class, optional: true)]
     public ?array $refunds;
 
     /**
@@ -244,7 +242,7 @@ final class OrderExpireResponse implements BaseModel
     public ?StatusClassification $statusClassification;
 
     /** @var list<StatusHistoryList>|null $statusHistoryList */
-    #[Api(type: new ListOf(StatusHistoryList::class), optional: true)]
+    #[Api(list: StatusHistoryList::class, optional: true)]
     public ?array $statusHistoryList;
 
     /**
@@ -310,14 +308,14 @@ final class OrderExpireResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status::* $status
-     * @param list<mixed>|null $impactOffsetProjects
-     * @param list<LineItem>|null $lineItems
-     * @param array<string, mixed>|null $metadata
-     * @param PaymentMethodType::*|null $paymentMethodType
-     * @param PaymentMode::*|null $paymentMode
-     * @param PaymentStatus::*|null $paymentStatus
-     * @param list<Refund>|null $refunds
-     * @param list<StatusHistoryList>|null $statusHistoryList
+     * @param list<mixed> $impactOffsetProjects
+     * @param list<LineItem> $lineItems
+     * @param array<string, mixed> $metadata
+     * @param PaymentMethodType::* $paymentMethodType
+     * @param PaymentMode::* $paymentMode
+     * @param PaymentStatus::* $paymentStatus
+     * @param list<Refund> $refunds
+     * @param list<StatusHistoryList> $statusHistoryList
      */
     public static function with(
         string $id,

@@ -8,7 +8,6 @@ use Getivy\Core\Attributes\Api;
 use Getivy\Core\Concerns\SdkModel;
 use Getivy\Core\Concerns\SdkParams;
 use Getivy\Core\Contracts\BaseModel;
-use Getivy\Core\Conversion\ListOf;
 use Getivy\Webhook\Subscription\SubscriptionUpdateParams\Event;
 
 /**
@@ -30,7 +29,7 @@ final class SubscriptionUpdateParams implements BaseModel
      *
      * @var list<Event::*>|null $events
      */
-    #[Api(type: new ListOf(enum: Event::class), optional: true)]
+    #[Api(list: Event::class, optional: true)]
     public ?array $events;
 
     /**
@@ -64,7 +63,7 @@ final class SubscriptionUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Event::*>|null $events
+     * @param list<Event::*> $events
      */
     public static function with(
         mixed $id,

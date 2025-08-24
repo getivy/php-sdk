@@ -32,7 +32,7 @@ final class AdditionalDisplayInformation implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Cadence::*|null $cadence
+     * @param Cadence::* $cadence
      */
     public static function with(
         ?string $cadence = null,

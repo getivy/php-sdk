@@ -7,7 +7,6 @@ namespace Getivy\Payouts;
 use Getivy\Core\Attributes\Api;
 use Getivy\Core\Concerns\SdkModel;
 use Getivy\Core\Contracts\BaseModel;
-use Getivy\Core\Conversion\MapOf;
 use Getivy\Payouts\Payout\Currency;
 use Getivy\Payouts\Payout\Destination;
 use Getivy\Payouts\Payout\Status;
@@ -76,7 +75,7 @@ final class Payout implements BaseModel
      *
      * @var array<string, mixed>|null $metadata
      */
-    #[Api(type: new MapOf('string'), optional: true)]
+    #[Api(map: 'mixed', optional: true)]
     public ?array $metadata;
 
     /**
@@ -130,7 +129,7 @@ final class Payout implements BaseModel
      * @param Currency::* $currency
      * @param Status::* $status
      * @param Type::* $type
-     * @param array<string, mixed>|null $metadata
+     * @param array<string, mixed> $metadata
      */
     public static function with(
         string $id,

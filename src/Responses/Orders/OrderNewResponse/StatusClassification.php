@@ -48,12 +48,10 @@ final class StatusClassification implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Primary::* $primary
-     * @param Secondary::*|null $secondary
+     * @param Secondary::* $secondary
      */
-    public static function with(
-        string $primary,
-        ?string $secondary = null
-    ): self {
+    public static function with(string $primary, ?string $secondary = null): self
+    {
         $obj = new self;
 
         $obj->primary = $primary;

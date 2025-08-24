@@ -7,7 +7,6 @@ namespace Getivy\Responses\Balance;
 use Getivy\Core\Attributes\Api;
 use Getivy\Core\Concerns\SdkModel;
 use Getivy\Core\Contracts\BaseModel;
-use Getivy\Core\Conversion\ListOf;
 use Getivy\Responses\Balance\BalanceGetResponse\Balance;
 
 final class BalanceGetResponse implements BaseModel
@@ -19,7 +18,7 @@ final class BalanceGetResponse implements BaseModel
      *
      * @var list<Balance> $balances
      */
-    #[Api(type: new ListOf(Balance::class))]
+    #[Api(list: Balance::class)]
     public array $balances;
 
     /**

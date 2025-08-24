@@ -7,7 +7,6 @@ namespace Getivy\Responses\Deposits;
 use Getivy\Core\Attributes\Api;
 use Getivy\Core\Concerns\SdkModel;
 use Getivy\Core\Contracts\BaseModel;
-use Getivy\Core\Conversion\ListOf;
 use Getivy\Responses\Deposits\DepositGetResponse\Currency;
 use Getivy\Responses\Deposits\DepositGetResponse\Payee;
 use Getivy\Responses\Deposits\DepositGetResponse\Payer;
@@ -67,7 +66,7 @@ final class DepositGetResponse implements BaseModel
   public \DateTimeInterface $receivedAt;
 
   /** @var list<Return> $returns */
-  #[Api(type: new ListOf(Return::class))]
+  #[Api(list: Return::class)]
   public array $returns;
 
   /**
@@ -154,8 +153,8 @@ final class DepositGetResponse implements BaseModel
   * @param list<Return> $returns
   * @param Status::* $status
   * @param string $transactionID
-  * @param string|null $bankStatementReference
-  * @param string|null $rail
+  * @param string $bankStatementReference
+  * @param string $rail
   * 
   * @return self
  */
@@ -169,8 +168,8 @@ final class DepositGetResponse implements BaseModel
     array $returns,
     string $status,
     string $transactionID,
-    ?string $bankStatementReference = null,
-    ?string $rail = null,
+    string $bankStatementReference = null,
+    string $rail = null,
   ): self {
     $obj = new self;
 
