@@ -7,7 +7,6 @@ namespace Getivy\Responses\Capabilities;
 use Getivy\Core\Attributes\Api;
 use Getivy\Core\Concerns\SdkModel;
 use Getivy\Core\Contracts\BaseModel;
-use Getivy\Core\Conversion\ListOf;
 use Getivy\Responses\Capabilities\CapabilityGetResponse\Capability;
 
 final class CapabilityGetResponse implements BaseModel
@@ -15,7 +14,7 @@ final class CapabilityGetResponse implements BaseModel
     use SdkModel;
 
     /** @var list<Capability::*>|null $capabilities */
-    #[Api(type: new ListOf(enum: Capability::class), optional: true)]
+    #[Api(list: Capability::class, optional: true)]
     public ?array $capabilities;
 
     public function __construct()
@@ -29,7 +28,7 @@ final class CapabilityGetResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Capability::*>|null $capabilities
+     * @param list<Capability::*> $capabilities
      */
     public static function with(?array $capabilities = null): self
     {

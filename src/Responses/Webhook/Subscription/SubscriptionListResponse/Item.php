@@ -7,7 +7,6 @@ namespace Getivy\Responses\Webhook\Subscription\SubscriptionListResponse;
 use Getivy\Core\Attributes\Api;
 use Getivy\Core\Concerns\SdkModel;
 use Getivy\Core\Contracts\BaseModel;
-use Getivy\Core\Conversion\ListOf;
 use Getivy\Responses\Webhook\Subscription\SubscriptionListResponse\Item\Event;
 
 final class Item implements BaseModel
@@ -21,7 +20,7 @@ final class Item implements BaseModel
     public mixed $createdAt;
 
     /** @var list<Event::*> $events */
-    #[Api(type: new ListOf(enum: Event::class))]
+    #[Api(list: Event::class)]
     public array $events;
 
     #[Api]

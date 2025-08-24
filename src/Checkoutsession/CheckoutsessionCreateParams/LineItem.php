@@ -85,7 +85,7 @@ final class LineItem implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Category::*|null $category
+     * @param Category::* $category
      */
     public static function with(
         float $amount,

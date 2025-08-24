@@ -20,8 +20,6 @@ use Getivy\Core\Attributes\Api;
 use Getivy\Core\Concerns\SdkModel;
 use Getivy\Core\Concerns\SdkParams;
 use Getivy\Core\Contracts\BaseModel;
-use Getivy\Core\Conversion\ListOf;
-use Getivy\Core\Conversion\MapOf;
 
 /**
  * Creates a Checkout Session for the merchant corresponding to the given API key. See [the guide](https://docs.getivy.de/docs/payment-integration) for more information.
@@ -99,7 +97,7 @@ final class CheckoutsessionCreateParams implements BaseModel
      *
      * @var list<LineItem>|null $lineItems
      */
-    #[Api(type: new ListOf(LineItem::class), optional: true)]
+    #[Api(list: LineItem::class, optional: true)]
     public ?array $lineItems;
 
     /** @var Locale::*|null $locale */
@@ -122,7 +120,7 @@ final class CheckoutsessionCreateParams implements BaseModel
      *
      * @var array<string, mixed>|null $metadata
      */
-    #[Api(type: new MapOf('string'), optional: true)]
+    #[Api(map: 'mixed', optional: true)]
     public ?array $metadata;
 
     /**
@@ -190,13 +188,13 @@ final class CheckoutsessionCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<LineItem>|null $lineItems
-     * @param Locale::*|null $locale
-     * @param Market::*|null $market
-     * @param array<string, mixed>|null $metadata
-     * @param PaymentMode::*|null $paymentMode
-     * @param PaymentSchemeSelection::*|null $paymentSchemeSelection
-     * @param ThemeVariant::*|null $themeVariant
+     * @param list<LineItem> $lineItems
+     * @param Locale::* $locale
+     * @param Market::* $market
+     * @param array<string, mixed> $metadata
+     * @param PaymentMode::* $paymentMode
+     * @param PaymentSchemeSelection::* $paymentSchemeSelection
+     * @param ThemeVariant::* $themeVariant
      */
     public static function with(
         Price $price,
